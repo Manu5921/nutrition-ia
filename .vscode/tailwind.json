@@ -1,0 +1,57 @@
+{
+  "version": 1.1,
+  "atDirectives": [
+    {
+      "name": "@theme",
+      "description": "Tailwind CSS 4.0 theme configuration block",
+      "references": [
+        {
+          "name": "Tailwind CSS 4.0 Documentation",
+          "url": "https://tailwindcss.com/docs/configuration"
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "name": "--color-sage-*",
+      "description": "Sage color palette for anti-inflammatory theme",
+      "syntax": "oklch(<lightness> <chroma> <hue>)"
+    },
+    {
+      "name": "--color-turmeric-*", 
+      "description": "Turmeric color palette for spice accent theme",
+      "syntax": "oklch(<lightness> <chroma> <hue>)"
+    },
+    {
+      "name": "--color-linen-*",
+      "description": "Linen color palette for neutral beige theme", 
+      "syntax": "oklch(<lightness> <chroma> <hue>)"
+    },
+    {
+      "name": "--font-size-*",
+      "description": "Fluid typography using clamp()",
+      "syntax": "clamp(<min-size>, <preferred-size>, <max-size>)"
+    },
+    {
+      "name": "--shadow-*",
+      "description": "Shadows using color-mix() with P3 colors",
+      "syntax": "color-mix(in oklch, <color> <percentage>, transparent)"
+    },
+    {
+      "name": "--container-*",
+      "description": "Container query breakpoints",
+      "syntax": "<length>"
+    }
+  ],
+  "pseudoClasses": [
+    {
+      "name": "hover:scale-[1.02]",
+      "description": "Micro hover animation for nutrition components"
+    },
+    {
+      "name": "active:scale-[0.98]",
+      "description": "Micro press animation for interactive elements"
+    }
+  ]
+}

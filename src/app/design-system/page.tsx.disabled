@@ -1,0 +1,463 @@
+"use client"
+
+import React from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle, NutritionCard, MetricCard } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Input, LabeledInput, SearchInput } from "@/components/ui/input"
+import RecipeCard from "@/components/nutrition/recipe-card"
+import NutritionScore from "@/components/nutrition/nutrition-score"
+import MealPlanCard from "@/components/nutrition/meal-plan-card"
+import { 
+  Heart, 
+  Leaf, 
+  Sparkles, 
+  Zap, 
+  Target, 
+  Clock,
+  TrendingUp,
+  Palette,
+  Layout,
+  Type
+} from "lucide-react"
+
+// Données d'exemple
+const sampleRecipe = {
+  id: "1",
+  name: "Saumon grillé aux épices anti-inflammatoires",
+  description: "Un délicieux saumon grillé avec un mélange d'épices curcuma, gingembre et coriandre, accompagné de légumes de saison.",
+  image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&h=300&fit=crop",
+  cookingTime: 25,
+  servings: 4,
+  calories: 320,
+  antiInflammatoryScore: 87,
+  difficulty: "moyen" as const,
+  tags: ["poisson", "anti-inflammatoire", "oméga-3", "sans gluten"],
+  ingredients: [
+    { name: "Filet de saumon", quantity: 600, unit: "g" },
+    { name: "Curcuma", quantity: 1, unit: "cuillère à café" },
+    { name: "Gingembre frais", quantity: 20, unit: "g" }
+  ],
+  nutrition: {
+    proteins: 28.5,
+    carbs: 5.2,
+    fats: 18.3,
+    fiber: 2.1,
+    omega3: 1.8
+  }
+}
+
+const sampleNutritionScore = {
+  score: 78,
+  previousScore: 72,
+  breakdown: {
+    omega3: 85,
+    antioxidants: 72,
+    fiber: 68,
+    vitamins: 82,
+    minerals: 76,
+    antiInflammatory: 80
+  },
+  recommendations: [
+    "Augmentez votre consommation de baies pour plus d'antioxydants",
+    "Ajoutez des graines de lin à vos smoothies pour les oméga-3",
+    "Privilégiez les légumes verts feuillus à chaque repas"
+  ]
+}
+
+const sampleMealPlan = {
+  day: "Lundi 23 Juin",
+  meals: {
+    breakfast: {
+      id: "b1",
+      name: "Bowl avocat-épinards au curcuma",
+      description: "Un bol nutritif avec avocat, épinards frais, graines de tournesol et une pointe de curcuma.",
+      calories: 280,
+      prepTime: 10,
+      difficulty: "facile" as const,
+      antiInflammatoryScore: 82,
+      ingredients: [],
+      tags: ["végétarien", "anti-inflammatoire"]
+    },
+    lunch: {
+      id: "l1", 
+      name: "Salade de quinoa aux légumes grillés",
+      description: "Quinoa coloré avec courgettes, poivrons et aubergines grillés, assaisonnement à l'huile d'olive.",
+      calories: 380,
+      prepTime: 30,
+      difficulty: "moyen" as const,
+      antiInflammatoryScore: 75,
+      ingredients: [],
+      tags: ["végétarien", "quinoa", "légumes"]
+    },
+    dinner: sampleRecipe
+  },
+  totalCalories: 980,
+  totalScore: 78
+}
+
+export default function DesignSystemPage() {
+  const [searchValue, setSearchValue] = React.useState("")
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-linen-50 via-white to-sage-50 animate-fade-in">
+      {/* Header avec effet glassmorphism */}
+      <header className="bg-white/80 backdrop-blur-md border-b border-linen-200/50 sticky top-0 z-50 shadow-soft">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-gradient-to-br from-sage-100 to-sage-200 rounded-2xl shadow-soft group hover:shadow-glow transition-all duration-300">
+                <Leaf className="h-8 w-8 text-sage-600 group-hover:scale-110 transition-transform duration-300" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-display font-semibold text-sage-900 text-balance">
+                  Design System 4.0
+                </h1>
+                <p className="text-sm text-sage-600 font-medium">Coach Nutritionnel Anti-Inflammatoire</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <Badge variant="success" className="flex items-center gap-1.5 animate-bounce-gentle">
+                <Sparkles className="h-3 w-3" />
+                Tailwind CSS 4.0
+              </Badge>
+              <Badge className="flex items-center gap-1.5">
+                <Heart className="h-3 w-3" />
+                Design System
+              </Badge>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Section Héro améliorée */}
+        <section className="text-center py-16 mb-16 relative overflow-hidden">
+          {/* Background decoratif */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-10 left-10 w-20 h-20 bg-sage-300 rounded-full animate-bounce-gentle"></div>
+            <div className="absolute top-32 right-20 w-16 h-16 bg-turmeric-300 rounded-full animate-pulse-soft"></div>
+            <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-success-300 rounded-full animate-bounce-gentle" style={{ animationDelay: '1s' }}></div>
+          </div>
+          
+          <div className="relative z-10">
+            <div className="flex justify-center mb-8">
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-turmeric-200 via-sage-200 to-success-200 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse-soft"></div>
+                <div className="relative p-6 bg-white/80 backdrop-blur-sm rounded-3xl shadow-glow">
+                  <Sparkles className="h-20 w-20 text-turmeric-600 animate-bounce-gentle" />
+                </div>
+              </div>
+            </div>
+            
+            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-display font-semibold text-sage-900 mb-6 text-balance animate-fade-in">
+              Design System
+              <span className="block text-turmeric-600">Anti-Inflammatoire</span>
+            </h2>
+            
+            <p className="text-xl text-sage-700 max-w-3xl mx-auto mb-10 text-pretty leading-relaxed animate-slide-up">
+              Découvrez le système de design complet avec <strong>Tailwind CSS 4.0</strong>, 
+              conçu spécialement pour une expérience nutritionnelle apaisante et moderne.
+            </p>
+
+            {/* Métriques du design system */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-12">
+              <MetricCard 
+                metric="Couleurs P3"
+                value="50+"
+                trend="up"
+                icon={<Palette className="h-4 w-4" />}
+              />
+              <MetricCard 
+                metric="Composants"
+                value="25+"
+                trend="up"
+                icon={<Layout className="h-4 w-4" />}
+              />
+              <MetricCard 
+                metric="Typographie"
+                value="2 Fonts"
+                trend="stable"
+                icon={<Type className="h-4 w-4" />}
+              />
+              <MetricCard 
+                metric="Performance"
+                value="100/100"
+                trend="up"
+                icon={<Zap className="h-4 w-4" />}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Démonstration des composants */}
+        <div className="space-y-16">
+          {/* Section Buttons & Inputs */}
+          <section className="space-y-8">
+            <div className="text-center">
+              <h3 className="text-3xl font-display font-semibold text-sage-900 mb-2">
+                Composants UI 4.0
+              </h3>
+              <p className="text-sage-600 text-pretty">
+                Composants modernes optimisés pour l'expérience anti-inflammatoire
+              </p>
+            </div>
+            
+            <NutritionCard variant="program" className="overflow-hidden">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Target className="h-5 w-5 text-turmeric-600" />
+                  Boutons et interactions
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-8">
+                {/* Boutons variantes */}
+                <div className="space-y-6">
+                  <h4 className="font-semibold text-sage-800 flex items-center gap-2">
+                    <span>Variantes de boutons</span>
+                    <Badge variant="nutrition" className="text-xs">Nouveautés 4.0</Badge>
+                  </h4>
+                  <div className="grid gap-4">
+                    <div className="flex flex-wrap gap-3">
+                      <Button>Principal</Button>
+                      <Button variant="secondary">Secondaire</Button>
+                      <Button variant="outline">Contour</Button>
+                      <Button variant="ghost">Fantôme</Button>
+                      <Button variant="nutrition">🌟 Nutrition</Button>
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                      <Button variant="success">Succès</Button>
+                      <Button variant="warning">Attention</Button>
+                      <Button variant="danger">Danger</Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tailles et états */}
+                <div className="space-y-6">
+                  <h4 className="font-semibold text-sage-800">Tailles et états</h4>
+                  <div className="grid gap-4">
+                    <div className="flex flex-wrap gap-3 items-center">
+                      <Button size="sm">Petit</Button>
+                      <Button>Normal</Button>
+                      <Button size="lg">Grand</Button>
+                      <Button size="xl">Extra Large</Button>
+                    </div>
+                    <div className="flex flex-wrap gap-3 items-center">
+                      <Button loading>Chargement</Button>
+                      <Button leftIcon={<Heart className="h-4 w-4" />}>Avec icône</Button>
+                      <Button rightIcon={<TrendingUp className="h-4 w-4" />}>Tendance</Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Inputs */}
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-sage-800">Champs de saisie</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Input placeholder="Input standard" />
+                    <Input placeholder="Input avec erreur" error />
+                    <Input placeholder="Input avec succès" success />
+                    <LabeledInput 
+                      label="Poids"
+                      unit="kg"
+                      placeholder="Votre poids"
+                      required
+                      description="Nous utilisons ces données pour personnaliser vos recommandations"
+                    />
+                    <SearchInput 
+                      placeholder="Rechercher un aliment..."
+                      value={searchValue}
+                      onChange={(e) => setSearchValue(e.target.value)}
+                      onClear={() => setSearchValue("")}
+                    />
+                  </div>
+                </div>
+
+                {/* Badges */}
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-sage-800">Badges</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge>Par défaut</Badge>
+                    <Badge variant="secondary">Secondaire</Badge>
+                    <Badge variant="outline">Contour</Badge>
+                    <Badge variant="success">Succès</Badge>
+                    <Badge variant="warning">Attention</Badge>
+                    <Badge variant="destructive">Danger</Badge>
+                    <Badge variant="nutrition">Nutrition</Badge>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Section Score Nutritionnel */}
+          <section className="space-y-6">
+            <h3 className="text-2xl font-display font-semibold text-sage-900">
+              Score nutritionnel
+            </h3>
+            <div className="max-w-md mx-auto">
+              <NutritionScore 
+                score={sampleNutritionScore.score}
+                previousScore={sampleNutritionScore.previousScore}
+                breakdown={sampleNutritionScore.breakdown}
+                recommendations={sampleNutritionScore.recommendations}
+              />
+            </div>
+          </section>
+
+          {/* Section Recette */}
+          <section className="space-y-6">
+            <h3 className="text-2xl font-display font-semibold text-sage-900">
+              Carte de recette
+            </h3>
+            <div className="max-w-sm mx-auto">
+              <RecipeCard 
+                recipe={sampleRecipe}
+                onSave={(id) => console.log("Sauvegarde recette:", id)}
+                onView={(id) => console.log("Voir recette:", id)}
+              />
+            </div>
+          </section>
+
+          {/* Section Plan de repas */}
+          <section className="space-y-6">
+            <h3 className="text-2xl font-display font-semibold text-sage-900">
+              Plan de repas
+            </h3>
+            <div className="max-w-2xl mx-auto">
+              <MealPlanCard 
+                day={sampleMealPlan.day}
+                meals={sampleMealPlan.meals}
+                totalCalories={sampleMealPlan.totalCalories}
+                totalScore={sampleMealPlan.totalScore}
+                onMealEdit={(type, meal) => console.log("Éditer repas:", type, meal)}
+                onAddSnack={() => console.log("Ajouter collation")}
+              />
+            </div>
+          </section>
+
+          {/* Section Palette couleurs */}
+          <section className="space-y-6">
+            <h3 className="text-2xl font-display font-semibold text-sage-900">
+              Palette de couleurs anti-inflammatoire
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Verts Sage */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-sage-600">Sage (Principal)</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(shade => (
+                      <div key={shade} className="flex items-center gap-3">
+                        <div 
+                          className={`w-8 h-8 rounded-lg bg-sage-${shade} border border-sage-200`}
+                        />
+                        <span className="text-sm font-mono">sage-{shade}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Oranges Turmeric */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-turmeric-600">Turmeric (Accent)</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(shade => (
+                      <div key={shade} className="flex items-center gap-3">
+                        <div 
+                          className={`w-8 h-8 rounded-lg bg-turmeric-${shade} border border-linen-200`}
+                        />
+                        <span className="text-sm font-mono">turmeric-{shade}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Beiges Linen */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-linen-600">Linen (Neutre)</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(shade => (
+                      <div key={shade} className="flex items-center gap-3">
+                        <div 
+                          className={`w-8 h-8 rounded-lg bg-linen-${shade} border border-linen-300`}
+                        />
+                        <span className="text-sm font-mono">linen-{shade}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+
+          {/* Section Typography */}
+          <section className="space-y-6">
+            <h3 className="text-2xl font-display font-semibold text-sage-900">
+              Typographie
+            </h3>
+            <Card>
+              <CardContent className="space-y-8 py-8">
+                <div>
+                  <h4 className="font-semibold text-sage-800 mb-4">Playfair Display - Titres</h4>
+                  <div className="space-y-4">
+                    <h1 className="text-4xl font-display font-semibold text-sage-900">Titre Principal (H1)</h1>
+                    <h2 className="text-3xl font-display font-semibold text-sage-900">Titre Secondaire (H2)</h2>
+                    <h3 className="text-2xl font-display font-semibold text-sage-900">Titre Tertiaire (H3)</h3>
+                    <h4 className="text-xl font-display font-semibold text-sage-900">Titre Quaternaire (H4)</h4>
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-sage-800 mb-4">Inter - Corps de texte</h4>
+                  <div className="space-y-4">
+                    <p className="text-lg text-sage-700">
+                      Texte large - Pour les descriptions importantes et les introductions.
+                    </p>
+                    <p className="text-base text-sage-700">
+                      Texte normal - Pour le contenu principal, les descriptions et les informations générales.
+                    </p>
+                    <p className="text-sm text-sage-600">
+                      Texte petit - Pour les métadonnées, les légendes et les informations secondaires.
+                    </p>
+                    <p className="text-xs text-sage-500">
+                      Texte très petit - Pour les notes de bas de page et les détails techniques.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </section>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="mt-20 bg-sage-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="text-center">
+            <div className="flex justify-center items-center gap-3 mb-4">
+              <Leaf className="h-8 w-8 text-sage-300" />
+              <span className="text-xl font-display font-semibold">
+                Design System - Coach Nutritionnel IA
+              </span>
+            </div>
+            <p className="text-sage-300 max-w-md mx-auto">
+              Système de design complet pour une expérience anti-inflammatoire apaisante.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
