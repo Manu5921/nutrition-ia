@@ -117,7 +117,7 @@ CREATE INDEX idx_foods_inflammatory_potential ON foods(inflammatory_potential);
 
 -- Index de recherche full-text pour noms
 CREATE INDEX idx_foods_search ON foods USING GIN(
-  to_tsvector('french', name_fr || ' ' || COALESCE(array_to_string(common_names, ' '), ''))
+  to_tsvector('french', name_fr)
 );
 
 -- =====================================================
@@ -285,9 +285,7 @@ CREATE TABLE daily_nutrition_tracking (
   
   -- Calculs de progression
   calories_consumed integer DEFAULT 0,
-  calories_remaining integer GENERATED ALWAYS AS (
-    COALESCE((daily_targets->>'daily_calories_target')::integer, 2000) - calories_consumed
-  ) STORED,
+  calories_remaining integer DEFAULT 0,
   
   -- Pourcentage d'atteinte des objectifs
   protein_goal_percentage decimal(5,2),
