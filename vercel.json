@@ -86,7 +86,6 @@
       "destination": "/api/sitemap"
     }
   ],
-  "regions": ["cdg1"],
   "env": {
     "NEXTAUTH_SECRET": "@nextauth_secret",
     "NEXTAUTH_URL": "@nextauth_url",
