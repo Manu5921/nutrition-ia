@@ -15,61 +15,61 @@ INSERT INTO foods (name_fr, category, subcategory, nutrition_per_100g, anti_infl
 ('Épinards', 'legume', 'legume_vert', '{
   "energy_kcal": 23, "protein_g": 2.9, "carbohydrate_g": 3.6, "fat_total_g": 0.4,
   "fiber_g": 2.2, "vitamin_c_mg": 28, "iron_mg": 2.7, "calcium_mg": 99
-}'::jsonb, 9, 'anti_inflammatoire', '{}', '["vegetarien", "vegan", "sans_gluten", "paleo"]', '["printemps", "automne", "hiver"]', 3.50, 'economique'),
+}'::jsonb, 9, 'anti_inflammatoire', ARRAY[]::text[], ARRAY['vegetarien', 'vegan', 'sans_gluten', 'paleo'], ARRAY['printemps', 'automne', 'hiver'], 3.50, 'economique'),
 
 ('Brocolis', 'legume', 'crucifere', '{
   "energy_kcal": 34, "protein_g": 2.8, "carbohydrate_g": 7, "fat_total_g": 0.4,
   "fiber_g": 2.6, "vitamin_c_mg": 89, "vitamin_k_ug": 102
-}'::jsonb, 9, 'anti_inflammatoire', '{}', '["vegetarien", "vegan", "sans_gluten", "paleo"]', '["automne", "hiver"]', 4.20, 'economique'),
+}'::jsonb, 9, 'anti_inflammatoire', ARRAY[]::text[], ARRAY['vegetarien', 'vegan', 'sans_gluten', 'paleo'], ARRAY['automne', 'hiver'], 4.20, 'economique'),
 
 ('Avocat', 'legume', 'fruit_legume', '{
   "energy_kcal": 160, "protein_g": 2, "carbohydrate_g": 9, "fat_total_g": 15,
   "fiber_g": 7, "vitamin_k_ug": 21, "potassium_mg": 485
-}'::jsonb, 8, 'anti_inflammatoire', '{}', '["vegetarien", "vegan", "sans_gluten", "paleo", "cetogene"]', '["printemps", "ete", "automne"]', 8.90, 'premium'),
+}'::jsonb, 8, 'anti_inflammatoire', ARRAY[]::text[], ARRAY['vegetarien', 'vegan', 'sans_gluten', 'paleo', 'cetogene'], ARRAY['printemps', 'ete', 'automne'], 8.90, 'premium'),
 
 -- Fruits anti-inflammatoires
 ('Myrtilles', 'fruit', 'baie', '{
   "energy_kcal": 57, "protein_g": 0.7, "carbohydrate_g": 14, "fat_total_g": 0.3,
   "fiber_g": 2.4, "vitamin_c_mg": 10, "vitamin_k_ug": 19
-}'::jsonb, 10, 'anti_inflammatoire', '{}', '["vegetarien", "vegan", "sans_gluten", "paleo"]', '["ete"]', 12.50, 'premium'),
+}'::jsonb, 10, 'anti_inflammatoire', ARRAY[]::text[], ARRAY['vegetarien', 'vegan', 'sans_gluten', 'paleo'], ARRAY['ete'], 12.50, 'premium'),
 
 ('Cerises', 'fruit', 'drupe', '{
   "energy_kcal": 63, "protein_g": 1.1, "carbohydrate_g": 16, "fat_total_g": 0.2,
   "fiber_g": 2.1, "vitamin_c_mg": 7, "potassium_mg": 222
-}'::jsonb, 9, 'anti_inflammatoire', '{}', '["vegetarien", "vegan", "sans_gluten", "paleo"]', '["ete"]', 8.90, 'moyen'),
+}'::jsonb, 9, 'anti_inflammatoire', ARRAY[]::text[], ARRAY['vegetarien', 'vegan', 'sans_gluten', 'paleo'], ARRAY['ete'], 8.90, 'moyen'),
 
 -- Protéines
 ('Saumon atlantique', 'proteine', 'poisson_gras', '{
   "energy_kcal": 208, "protein_g": 25, "carbohydrate_g": 0, "fat_total_g": 12,
   "omega3_g": 2.3, "vitamin_d_ug": 11
-}'::jsonb, 9, 'anti_inflammatoire', '["poisson"]', '["sans_gluten", "paleo", "cetogene"]', '["printemps", "ete", "automne", "hiver"]', 25.90, 'premium'),
+}'::jsonb, 9, 'anti_inflammatoire', ARRAY['poisson'], ARRAY['sans_gluten', 'paleo', 'cetogene'], ARRAY['printemps', 'ete', 'automne', 'hiver'], 25.90, 'premium'),
 
 ('Quinoa', 'cereale', 'pseudo_cereale', '{
   "energy_kcal": 368, "protein_g": 14, "carbohydrate_g": 64, "fat_total_g": 6,
   "fiber_g": 7, "iron_mg": 4.6, "magnesium_mg": 197
-}'::jsonb, 7, 'anti_inflammatoire', '{}', '["vegetarien", "vegan", "sans_gluten"]', '["printemps", "ete", "automne", "hiver"]', 8.50, 'moyen'),
+}'::jsonb, 7, 'anti_inflammatoire', ARRAY[]::text[], ARRAY['vegetarien', 'vegan', 'sans_gluten'], ARRAY['printemps', 'ete', 'automne', 'hiver'], 8.50, 'moyen'),
 
 -- Noix et graines
 ('Noix', 'oleagineux', 'noix', '{
   "energy_kcal": 654, "protein_g": 15, "carbohydrate_g": 14, "fat_total_g": 65,
   "fiber_g": 7, "omega3_g": 9.1, "vitamin_e_mg": 2.9
-}'::jsonb, 8, 'anti_inflammatoire', '["fruits_a_coque"]', '["vegetarien", "vegan", "sans_gluten", "paleo", "cetogene"]', '["automne"]', 18.90, 'premium'),
+}'::jsonb, 8, 'anti_inflammatoire', ARRAY['fruits_a_coque'], ARRAY['vegetarien', 'vegan', 'sans_gluten', 'paleo', 'cetogene'], ARRAY['automne'], 18.90, 'premium'),
 
 ('Graines de chia', 'oleagineux', 'graine', '{
   "energy_kcal": 486, "protein_g": 17, "carbohydrate_g": 42, "fat_total_g": 31,
   "fiber_g": 34, "omega3_g": 17.8, "calcium_mg": 631
-}'::jsonb, 9, 'anti_inflammatoire', '{}', '["vegetarien", "vegan", "sans_gluten", "paleo"]', '["printemps", "ete", "automne", "hiver"]', 15.90, 'premium'),
+}'::jsonb, 9, 'anti_inflammatoire', ARRAY[]::text[], ARRAY['vegetarien', 'vegan', 'sans_gluten', 'paleo'], ARRAY['printemps', 'ete', 'automne', 'hiver'], 15.90, 'premium'),
 
 -- Épices et aromates
 ('Curcuma', 'epice', 'rhizome', '{
   "energy_kcal": 354, "protein_g": 8, "carbohydrate_g": 65, "fat_total_g": 10,
   "fiber_g": 21, "iron_mg": 41
-}'::jsonb, 10, 'anti_inflammatoire', '{}', '["vegetarien", "vegan", "sans_gluten", "paleo"]', '["printemps", "ete", "automne", "hiver"]', 45.00, 'premium'),
+}'::jsonb, 10, 'anti_inflammatoire', ARRAY[]::text[], ARRAY['vegetarien', 'vegan', 'sans_gluten', 'paleo'], ARRAY['printemps', 'ete', 'automne', 'hiver'], 45.00, 'premium'),
 
 ('Gingembre', 'epice', 'rhizome', '{
   "energy_kcal": 80, "protein_g": 2, "carbohydrate_g": 18, "fat_total_g": 1,
   "fiber_g": 2, "vitamin_c_mg": 5
-}'::jsonb, 9, 'anti_inflammatoire', '{}', '["vegetarien", "vegan", "sans_gluten", "paleo"]', '["printemps", "ete", "automne", "hiver"]', 12.90, 'moyen');
+}'::jsonb, 9, 'anti_inflammatoire', ARRAY[]::text[], ARRAY['vegetarien', 'vegan', 'sans_gluten', 'paleo'], ARRAY['printemps', 'ete', 'automne', 'hiver'], 12.90, 'moyen');
 
 -- =====================================================
 -- 2. COMBINAISONS ALIMENTAIRES
@@ -80,21 +80,21 @@ INSERT INTO food_combinations (food_1_id, food_2_id, combination_type, nutrition
 ((SELECT id FROM foods WHERE name_fr = 'Curcuma'), 
  (SELECT id FROM foods WHERE name_fr = 'Gingembre'), 
  'synergique', 
- '["anti_inflammatoire_puissant", "digestion_amelioree"]',
+ ARRAY['anti_inflammatoire_puissant', 'digestion_amelioree'],
  9,
  'La curcumine et les gingérols agissent en synergie pour potentialiser les effets anti-inflammatoires'),
 
 ((SELECT id FROM foods WHERE name_fr = 'Épinards'), 
  (SELECT id FROM foods WHERE name_fr = 'Avocat'), 
  'synergique', 
- '["absorption_vitamines_liposolubles", "antioxydants_renforces"]',
+ ARRAY['absorption_vitamines_liposolubles', 'antioxydants_renforces'],
  8,
  'Les graisses saines de l''avocat améliorent l''absorption des vitamines A, D, E, K des épinards'),
 
 ((SELECT id FROM foods WHERE name_fr = 'Quinoa'), 
  (SELECT id FROM foods WHERE name_fr = 'Noix'), 
  'complementaire', 
- '["proteine_complete", "omega3_equilibre"]',
+ ARRAY['proteine_complete', 'omega3_equilibre'],
  7,
  'Combinaison d''acides aminés complémentaires et équilibre oméga-3/oméga-6');
 
@@ -117,9 +117,9 @@ INSERT INTO recipes (name, slug, description, short_description, ingredients, in
    {"name": "Huile d''olive", "quantity": "1", "unit": "cuillère à soupe", "notes": "Extra vierge"},
    {"name": "Citron", "quantity": "1/2", "unit": "pièce", "notes": "Bio de préférence"}
  ]'::jsonb,
- '["Cuire le quinoa dans 200ml d''eau bouillante salée pendant 15 minutes", "Pendant ce temps, cuire le saumon à la poêle 3-4 minutes de chaque côté", "Laver et essorer les épinards", "Couper l''avocat en lamelles", "Dans un bol, disposer le quinoa en base", "Ajouter les épinards, le saumon émietté, l''avocat", "Parsemer de myrtilles et graines de chia", "Assaisonner avec huile d''olive et jus de citron"]',
+ ARRAY['Cuire le quinoa dans 200ml d''eau bouillante salée pendant 15 minutes', 'Pendant ce temps, cuire le saumon à la poêle 3-4 minutes de chaque côté', 'Laver et essorer les épinards', 'Couper l''avocat en lamelles', 'Dans un bol, disposer le quinoa en base', 'Ajouter les épinards, le saumon émietté, l''avocat', 'Parsemer de myrtilles et graines de chia', 'Assaisonner avec huile d''olive et jus de citron'],
  '{"calories": 520, "protein_g": 35, "carbohydrate_g": 45, "fat_g": 22, "fiber_g": 12, "omega3_g": 2.8}'::jsonb,
- 9, 2, 15, 20, 'facile', '["dejeuner", "diner"]', '["sans_gluten", "paleo"]', '["printemps", "ete"]', 8.50, 'premium', NULL, true, true),
+ 9, 2, 15, 20, 'facile', ARRAY['dejeuner', 'diner'], ARRAY['sans_gluten', 'paleo'], ARRAY['printemps', 'ete'], 8.50, 'premium', NULL, true, true),
 
 ('Smoothie vert anti-inflammatoire', 'smoothie-vert-anti-inflammatoire',
  'Un smoothie onctueux et rafraîchissant, gorgé d''antioxydants et de nutriments anti-inflammatoires pour bien commencer la journée.',
@@ -133,9 +133,9 @@ INSERT INTO recipes (name, slug, description, short_description, ingredients, in
    {"name": "Graines de chia", "quantity": "1", "unit": "cuillère à soupe", "notes": ""},
    {"name": "Miel", "quantity": "1", "unit": "cuillère à café", "notes": "Optionnel"}
  ]'::jsonb,
- '["Laver les épinards", "Peler et couper le gingembre", "Dans un blender, mettre tous les ingrédients", "Mixer jusqu''à obtenir une texture lisse", "Ajouter de l''eau si nécessaire pour la consistance", "Servir immédiatement"]',
+ ARRAY['Laver les épinards', 'Peler et couper le gingembre', 'Dans un blender, mettre tous les ingrédients', 'Mixer jusqu''à obtenir une texture lisse', 'Ajouter de l''eau si nécessaire pour la consistance', 'Servir immédiatement'],
  '{"calories": 180, "protein_g": 6, "carbohydrate_g": 25, "fat_g": 8, "fiber_g": 9, "vitamin_c_mg": 45}'::jsonb,
- 9, 1, 5, 0, 'facile', '["petit_dejeuner", "collation"]', '["vegetarien", "vegan", "sans_gluten"]', '["printemps", "ete", "automne"]', 3.20, 'economique', NULL, true, true),
+ 9, 1, 5, 0, 'facile', ARRAY['petit_dejeuner', 'collation'], ARRAY['vegetarien', 'vegan', 'sans_gluten'], ARRAY['printemps', 'ete', 'automne'], 3.20, 'economique', NULL, true, true),
 
 ('Salade de quinoa aux légumes grillés', 'salade-quinoa-legumes-grilles',
  'Une salade copieuse et colorée avec quinoa, légumes grillés et vinaigrette au curcuma, riche en fibres et antioxydants.',
@@ -150,9 +150,9 @@ INSERT INTO recipes (name, slug, description, short_description, ingredients, in
    {"name": "Curcuma", "quantity": "1", "unit": "cuillère à café", "notes": "En poudre"},
    {"name": "Vinaigre balsamique", "quantity": "2", "unit": "cuillères à soupe", "notes": ""}
  ]'::jsonb,
- '["Cuire le quinoa 15 minutes dans de l''eau bouillante", "Préchauffer le four à 200°C", "Couper les légumes en morceaux", "Mélanger les légumes avec 2 c.à.s d''huile d''olive", "Enfourner 25 minutes", "Préparer la vinaigrette : mélanger huile, vinaigre, curcuma", "Mélanger quinoa refroidi, légumes grillés et vinaigrette", "Parsemer de noix avant de servir"]',
+ ARRAY['Cuire le quinoa 15 minutes dans de l''eau bouillante', 'Préchauffer le four à 200°C', 'Couper les légumes en morceaux', 'Mélanger les légumes avec 2 c.à.s d''huile d''olive', 'Enfourner 25 minutes', 'Préparer la vinaigrette : mélanger huile, vinaigre, curcuma', 'Mélanger quinoa refroidi, légumes grillés et vinaigrette', 'Parsemer de noix avant de servir'],
  '{"calories": 420, "protein_g": 16, "carbohydrate_g": 55, "fat_g": 18, "fiber_g": 10}'::jsonb,
- 8, 3, 20, 25, 'moyen', '["dejeuner", "diner"]', '["vegetarien", "vegan", "sans_gluten"]', '["ete", "automne"]', 4.80, 'economique', NULL, false, true);
+ 8, 3, 20, 25, 'moyen', ARRAY['dejeuner', 'diner'], ARRAY['vegetarien', 'vegan', 'sans_gluten'], ARRAY['ete', 'automne'], 4.80, 'economique', NULL, false, true);
 
 -- =====================================================
 -- 4. UTILISATEURS D'EXEMPLE (pour tests)
@@ -168,13 +168,13 @@ INSERT INTO users (id, email, is_active, metadata) VALUES
 
 -- Profils utilisateurs d'exemple
 INSERT INTO user_profiles (user_id, first_name, last_name, birth_date, gender, weight_kg, height_cm, activity_level, health_goals, food_restrictions, allergies) VALUES
-('00000000-0000-0000-0000-000000000001', 'Marie', 'Dupont', '1985-03-15', 'femme', 65.5, 168, 'modere', '["reduction_inflammation", "energie_amelioree"]', '[]', '[]'),
-('00000000-0000-0000-0000-000000000002', 'Jean', 'Martin', '1978-11-22', 'homme', 78.2, 180, 'leger', '["perte_poids", "reduction_inflammation"]', '["gluten"]', '["fruits_a_coque"]');
+('00000000-0000-0000-0000-000000000001', 'Marie', 'Dupont', '1985-03-15', 'femme', 65.5, 168, 'modere', ARRAY['reduction_inflammation', 'energie_amelioree'], ARRAY[]::text[], ARRAY[]::text[]),
+('00000000-0000-0000-0000-000000000002', 'Jean', 'Martin', '1978-11-22', 'homme', 78.2, 180, 'leger', ARRAY['perte_poids', 'reduction_inflammation'], ARRAY['gluten'], ARRAY['fruits_a_coque']);
 
 -- Préférences utilisateurs
 INSERT INTO user_preferences (user_id, favorite_cuisines, preferred_cooking_methods, meal_times) VALUES
-('00000000-0000-0000-0000-000000000001', '["mediterraneenne", "francaise"]', '["vapeur", "grille", "saute"]', '{"petit_dejeuner": "07:30", "dejeuner": "12:30", "diner": "19:30"}'::jsonb),
-('00000000-0000-0000-0000-000000000002', '["asiatique", "mediterraneenne"]', '["wok", "grille"]', '{"petit_dejeuner": "08:00", "dejeuner": "13:00", "diner": "20:00"}'::jsonb);
+('00000000-0000-0000-0000-000000000001', ARRAY['mediterraneenne', 'francaise'], ARRAY['vapeur', 'grille', 'saute'], '{"petit_dejeuner": "07:30", "dejeuner": "12:30", "diner": "19:30"}'::jsonb),
+('00000000-0000-0000-0000-000000000002', ARRAY['asiatique', 'mediterraneenne'], ARRAY['wok', 'grille'], '{"petit_dejeuner": "08:00", "dejeuner": "13:00", "diner": "20:00"}'::jsonb);
 
 -- Abonnements d'exemple
 INSERT INTO subscriptions (user_id, stripe_customer_id, stripe_subscription_id, stripe_price_id, status, current_period_start, current_period_end, amount_euro) VALUES
@@ -194,19 +194,32 @@ INSERT INTO user_recipe_interactions (user_id, recipe_id, is_liked, is_saved, is
 -- 6. PLANS ALIMENTAIRES D'EXEMPLE
 -- =====================================================
 
-INSERT INTO weekly_meal_plans (user_id, week_start_date, meals, status, is_custom) VALUES
-('00000000-0000-0000-0000-000000000001', CURRENT_DATE, '{
-  "lundi": {
-    "petit_dejeuner": {"recipe_id": "' || (SELECT id FROM recipes WHERE slug = 'smoothie-vert-anti-inflammatoire') || '", "servings": 1},
-    "dejeuner": {"recipe_id": "' || (SELECT id FROM recipes WHERE slug = 'bowl-anti-inflammatoire-saumon-quinoa') || '", "servings": 1},
-    "diner": {"recipe_id": "' || (SELECT id FROM recipes WHERE slug = 'salade-quinoa-legumes-grilles') || '", "servings": 1}
-  },
-  "mardi": {
-    "petit_dejeuner": {"recipe_id": "' || (SELECT id FROM recipes WHERE slug = 'smoothie-vert-anti-inflammatoire') || '", "servings": 1},
-    "dejeuner": {"recipe_id": "' || (SELECT id FROM recipes WHERE slug = 'salade-quinoa-legumes-grilles') || '", "servings": 1},
-    "diner": {"recipe_id": "' || (SELECT id FROM recipes WHERE slug = 'bowl-anti-inflammatoire-saumon-quinoa') || '", "servings": 1}
-  }
-}'::jsonb, 'active', false);
+-- Insérer le plan alimentaire avec une construction JSON correcte
+WITH recipe_ids AS (
+  SELECT 
+    (SELECT id FROM recipes WHERE slug = 'smoothie-vert-anti-inflammatoire') as smoothie_id,
+    (SELECT id FROM recipes WHERE slug = 'bowl-anti-inflammatoire-saumon-quinoa') as bowl_id,
+    (SELECT id FROM recipes WHERE slug = 'salade-quinoa-legumes-grilles') as salade_id
+)
+INSERT INTO weekly_meal_plans (user_id, week_start_date, meals, status, is_custom) 
+SELECT 
+  '00000000-0000-0000-0000-000000000001'::uuid,
+  CURRENT_DATE,
+  jsonb_build_object(
+    'lundi', jsonb_build_object(
+      'petit_dejeuner', jsonb_build_object('recipe_id', smoothie_id, 'servings', 1),
+      'dejeuner', jsonb_build_object('recipe_id', bowl_id, 'servings', 1),
+      'diner', jsonb_build_object('recipe_id', salade_id, 'servings', 1)
+    ),
+    'mardi', jsonb_build_object(
+      'petit_dejeuner', jsonb_build_object('recipe_id', smoothie_id, 'servings', 1),
+      'dejeuner', jsonb_build_object('recipe_id', salade_id, 'servings', 1),
+      'diner', jsonb_build_object('recipe_id', bowl_id, 'servings', 1)
+    )
+  ),
+  'active',
+  false
+FROM recipe_ids;
 
 -- =====================================================
 -- 7. SUIVI DE PROGRESSION

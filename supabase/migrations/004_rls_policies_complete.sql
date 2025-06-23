@@ -26,9 +26,9 @@ ALTER TABLE meal_nutrition_analysis ENABLE ROW LEVEL SECURITY;
 ALTER TABLE nutrition_goals ENABLE ROW LEVEL SECURITY;
 ALTER TABLE daily_nutrition_tracking ENABLE ROW LEVEL SECURITY;
 
--- Tables système
-ALTER TABLE audit_logs ENABLE ROW LEVEL SECURITY;
-ALTER TABLE user_action_rates ENABLE ROW LEVEL SECURITY;
+-- Tables système (seront créées dans la migration 8)
+-- ALTER TABLE audit_logs ENABLE ROW LEVEL SECURITY;
+-- ALTER TABLE user_action_rates ENABLE ROW LEVEL SECURITY;
 
 -- =====================================================
 -- 2. FONCTIONS HELPER - AUTHENTIFICATION ET AUTORISATION
@@ -390,20 +390,20 @@ CREATE POLICY "daily_nutrition_tracking_admin_all" ON daily_nutrition_tracking
   FOR ALL USING (auth.is_admin());
 
 -- =====================================================
--- 17. POLICIES POUR TABLE AUDIT_LOGS
+-- 17. POLICIES POUR TABLE AUDIT_LOGS (REPORTÉ À MIGRATION 8)
 -- =====================================================
 
 -- Seuls les admins peuvent voir les logs d'audit
-CREATE POLICY "audit_logs_admin_only" ON audit_logs
-  FOR ALL USING (auth.is_admin());
+-- CREATE POLICY "audit_logs_admin_only" ON audit_logs
+--   FOR ALL USING (auth.is_admin());
 
 -- =====================================================
--- 18. POLICIES POUR TABLE USER_ACTION_RATES
+-- 18. POLICIES POUR TABLE USER_ACTION_RATES (REPORTÉ À MIGRATION 8)
 -- =====================================================
 
 -- Les utilisateurs peuvent voir leurs propres données de rate limiting
-CREATE POLICY "user_action_rates_own" ON user_action_rates
-  FOR ALL USING (user_id = auth.user_id() OR auth.is_admin());
+-- CREATE POLICY "user_action_rates_own" ON user_action_rates
+--   FOR ALL USING (user_id = auth.user_id() OR auth.is_admin());
 
 -- =====================================================
 -- 19. TRIGGERS DE SÉCURITÉ ET AUDIT
