@@ -92,7 +92,7 @@ CREATE TABLE foods (
   
   -- Images et références
   image_url text,
-  source_references text[],
+  source_refs text[],
   
   -- Métadonnées
   is_verified boolean DEFAULT false,
@@ -143,7 +143,7 @@ CREATE TABLE food_combinations (
   
   -- Explications scientifiques
   scientific_explanation text,
-  references text[],
+  scientific_refs text[],
   
   -- Timestamps
   created_at timestamp DEFAULT now(),
