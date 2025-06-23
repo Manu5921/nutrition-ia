@@ -12,9 +12,9 @@ import {
   publicProcedure, 
   protectedProcedure, 
   handleSupabaseError,
-  auditLog,
-  trackServerQuery
+  auditLog
 } from '../server'
+import { trackServerQuery } from '../../supabase/server'
 
 // Schémas Zod pour validation des profils utilisateur
 const userProfileSchema = z.object({
