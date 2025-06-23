@@ -116,10 +116,5 @@ declare module 'next-auth' {
   }
 }
 
-declare module 'next-auth/jwt' {
-  interface JWT {
-    userId?: string
-    hasActiveSubscription?: boolean
-    isAdmin?: boolean
-  }
-}
+// Note: JWT types are handled differently in NextAuth v5
+// Custom JWT interface would be defined in auth.ts configuration
