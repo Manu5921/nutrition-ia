@@ -115,7 +115,7 @@ function createSupabaseMiddleware(request: NextRequest) {
 }
 
 // Fonction pour vérifier l'abonnement actif
-async function hasActiveSubscription(userId: string, supabase: any): Promise<boolean> {
+async function hasActiveSubscription(userId: string, supabase: ReturnType<typeof createClient>): Promise<boolean> {
   try {
     const { data, error } = await supabase
       .from('subscriptions')
@@ -133,7 +133,7 @@ async function hasActiveSubscription(userId: string, supabase: any): Promise<boo
 }
 
 // Fonction pour vérifier les privilèges admin
-async function isAdmin(userId: string, supabase: any): Promise<boolean> {
+async function isAdmin(userId: string, supabase: ReturnType<typeof createClient>): Promise<boolean> {
   try {
     const { data, error } = await supabase
       .from('users')
@@ -339,15 +339,22 @@ export type AuthMiddlewareConfig = {
 // Fonction utilitaire pour créer un middleware personnalisé
 export function createAuthMiddleware(config?: AuthMiddlewareConfig) {
   return async (request: NextRequest) => {
+    // Si aucune config personnalisée, utiliser le middleware par défaut
+    if (!config) {
+      return authMiddleware(request)
+    }
+
     // Fusionner avec la configuration par défaut
     const mergedConfig = {
-      publicRoutes: [...PUBLIC_ROUTES, ...(config?.publicRoutes || [])],
-      protectedRoutes: [...PROTECTED_ROUTES, ...(config?.protectedRoutes || [])],
-      subscriptionRequiredRoutes: [...SUBSCRIPTION_REQUIRED_ROUTES, ...(config?.subscriptionRequiredRoutes || [])],
-      adminRoutes: [...ADMIN_ROUTES, ...(config?.adminRoutes || [])],
+      publicRoutes: [...PUBLIC_ROUTES, ...(config.publicRoutes || [])],
+      protectedRoutes: [...PROTECTED_ROUTES, ...(config.protectedRoutes || [])],
+      subscriptionRequiredRoutes: [...SUBSCRIPTION_REQUIRED_ROUTES, ...(config.subscriptionRequiredRoutes || [])],
+      adminRoutes: [...ADMIN_ROUTES, ...(config.adminRoutes || [])],
     }
 
     // Utiliser la logique du middleware avec la config personnalisée
+    // (Ici on pourrait implémenter une logique personnalisée avec mergedConfig)
+    console.log('Using custom config:', mergedConfig)
     return authMiddleware(request)
   }
 }

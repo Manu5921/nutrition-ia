@@ -100,7 +100,7 @@ declare module 'next-auth' {
       name?: string | null
       email?: string | null
       image?: string | null
-      profile?: any
+      profile?: Record<string, unknown>
       hasActiveSubscription?: boolean
       subscriptionStatus?: string | null
       isAdmin?: boolean
@@ -109,7 +109,7 @@ declare module 'next-auth' {
 
   interface User {
     id: string
-    profile?: any
+    profile?: Record<string, unknown>
     hasActiveSubscription?: boolean
     subscriptionStatus?: string | null
     isAdmin?: boolean
